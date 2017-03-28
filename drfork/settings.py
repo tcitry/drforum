@@ -55,7 +55,8 @@ MIDDLEWARE = [
 ROOT_URLCONF = 'drfork.urls'
 
 REST_FRAMEWORK = {
-
+    'DEFAULT_PAGINATION_CLASS': 'rest_framework.pagination.LimitOffsetPagination',
+    'PAGE_SIZE': 100
 }
 
 TEMPLATES = [
@@ -83,13 +84,13 @@ WSGI_APPLICATION = 'drfork.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
-        # 'NAME': 'drfdb',
-        # 'PASSWORD': '123456',
-        # 'USER': 'root',
-        # 'HOST': '127.0.0.1',
-        # 'PORT': 3306,
+        'ENGINE': 'django.db.backends.mysql',
+        # 'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+        'NAME': 'drforkdb',
+        'PASSWORD': '123456',
+        'USER': 'root',
+        'HOST': '127.0.0.1',
+        'PORT': 3306,
     }
 }
 
