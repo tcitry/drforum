@@ -9,7 +9,7 @@ class TopicListModel(IDGeneratedModel):
     deleted_time = models.DateTimeField(blank=True, null=True)
     node_id = models.ForeignKey('TopicNodeModel', on_delete=models.SET_NULL, null=True)
 
-    class Mate:
+    class Meta:
         db_table = 'topic_list'
         ordering = ('-updated_time',)
 
@@ -18,7 +18,7 @@ class TopicDetailModel(BaseDateTimeModel):
     topic_id = models.ForeignKey('TopicListModel', on_delete=models.CASCADE)
     comment = models.TextField()
 
-    class Mate:
+    class Meta:
         db_table = 'topic_detail'
         ordering = ('created_time',)
 
@@ -26,6 +26,6 @@ class TopicDetailModel(BaseDateTimeModel):
 class TopicNodeModel(BaseDateTimeModel):
     node_name = models.CharField(max_length=20)
 
-    class Mate:
+    class Meta:
         db_table = 'topic_node'
-        ordering = ('created_time')
+        ordering = ('created_time',)
