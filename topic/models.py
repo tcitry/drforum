@@ -2,20 +2,20 @@ from django.db import models
 from common import IDGeneratedModel, BaseDateTimeModel
 
 
-class TopicList(IDGeneratedModel):
+class TopicListModel(IDGeneratedModel):
     title = models.CharField(max_length=256)
     content = models.TextField()
     deleted = models.BooleanField(default=False)
     deleted_time = models.DateTimeField(blank=True, null=True)
-    node_id = models.ForeignKey('TopicNode', on_delete=models.SET_NULL, null=True)
+    node_id = models.ForeignKey('TopicNodeModel', on_delete=models.SET_NULL, null=True)
 
     class Mate:
         db_table = 'topic_list'
         ordering = ('-updated_time',)
 
 
-class TopicDetail(BaseDateTimeModel):
-    topic_id = models.ForeignKey('TopicList', on_delete=models.CASCADE)
+class TopicDetailModel(BaseDateTimeModel):
+    topic_id = models.ForeignKey('TopicListModel', on_delete=models.CASCADE)
     comment = models.TextField()
 
     class Mate:
@@ -23,7 +23,7 @@ class TopicDetail(BaseDateTimeModel):
         ordering = ('created_time',)
 
 
-class TopicNode(BaseDateTimeModel):
+class TopicNodeModel(BaseDateTimeModel):
     node_name = models.CharField(max_length=20)
 
     class Mate:

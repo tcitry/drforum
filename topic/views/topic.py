@@ -13,3 +13,7 @@ class TopicListView(APIView):
             'info': 'hahaha'
         }
         return Response(param)
+
+class TopicDetailView(APIView):
+    def get(self, request, *args, **kwargs):
+        return Response()

@@ -1,5 +1,4 @@
-from .topic_list import TopicListView
-from .topic_detail import *
+from .topic import TopicListView
 
 __all__ = [
     'TopicListView',
