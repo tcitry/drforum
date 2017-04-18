@@ -1,8 +1,8 @@
 from django.db import models
-from common import IDGeneratedModel
+from common import IDAutoAddModel
 
 
-class TopicListModel(IDGeneratedModel):
+class TopicModel(IDAutoAddModel):
     title = models.CharField(max_length=256)
     author_id = models.IntegerField()
     content = models.TextField()
@@ -12,15 +12,15 @@ class TopicListModel(IDGeneratedModel):
         'TopicNodeModel', on_delete=models.SET_NULL, null=True)
 
     class Meta:
-        db_table = 'topic_list'
+        db_table = 'topics'
         ordering = ('-updated_time',)
 
 
-class TopicDetailModel(IDGeneratedModel):
-    topic_id = models.ForeignKey('TopicListModel', on_delete=models.CASCADE)
+class TopicCommentModel(IDAutoAddModel):
+    topic_id = models.ForeignKey('TopicModel', on_delete=models.CASCADE)
     author_id = models.IntegerField()
     comment = models.TextField()
 
     class Meta:
-        db_table = 'topic_detail'
+        db_table = 'topic_comments'
         ordering = ('created_time',)

@@ -9,6 +9,13 @@ class BaseDateTimeModel(models.Model):
         abstract = True
 
 
+class IDAutoAddModel(BaseDateTimeModel):
+    id = models.AutoField(primary_key=True)
+
+    class Meta:
+        abstract = True
+
+
 class IDGeneratedModel(BaseDateTimeModel):
     id = models.CharField(max_length=128, primary_key=True)
 

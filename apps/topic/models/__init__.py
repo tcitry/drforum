@@ -1,10 +1,10 @@
 from .node import TopicNodeModel
-from .topic import TopicListModel
-from .topic import TopicDetailModel
+from .topic import TopicModel
+from .topic import TopicCommentModel
 
 
 __all__ = [
     'TopicNodeModel',
-    'TopicListModel',
-    'TopicDetailModel',
+    'TopicModel',
+    'TopicCommentModel',
 ]

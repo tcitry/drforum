@@ -4,5 +4,5 @@ from .. import models
 
 class TopicListSerializer(serializers.ModelSerializer):
     class Meta:
-        model = models.TopicListModel
+        model = models.TopicModel
         fields = ('id', 'title', 'author_id', 'content')
