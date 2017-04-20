@@ -1,16 +1,21 @@
 import logging
+
+from rest_framework import generics
+from rest_framework.permissions import IsAuthenticated
 from rest_framework.views import APIView, Response
 
-from ..models import TopicModel
-from ..serializers import TopicListSerializer
+from ..models import TopicModel, TopicCommentModel
+from ..serializers import TopicListSerializer, TopicCommentSerializer
 
 logger = logging.getLogger(__name__)
 
 
 class TopicListView(APIView):
+    """
+    列出所有主题列表
+    """
 
     def get(self, request, *args, **kwargs):
-        print(request.stream)
         topic_list = TopicModel.objects.all()
         serializer = TopicListSerializer(topic_list, many=True)
         res_data = serializer.data
@@ -32,6 +37,28 @@ class TopicListView(APIView):
         return Response(res_data, status=200)
 
 
-class TopicDetailView(APIView):
-    def get(self, request, *args, **kwargs):
-        return Response()
+class TopicDetailView(generics.RetrieveUpdateDestroyAPIView):
+    """
+    每条主题内容
+    """
+
+    lookup_field = 'id'
+    lookup_url_kwarg = 'topic_id'
+    serializer_class = TopicListSerializer
+
+    def get_queryset(self):
+        print(self.request.query_params)
+        return TopicModel.objects.all()
+
+
+class TopicCommentView(generics.ListCreateAPIView):
+    """
+    所有的评论列表
+    """
+
+    serializer_class = TopicCommentSerializer
+    permission_classes = (IsAuthenticated, )
+
+    def get_queryset(self):
+        return TopicCommentModel.objects.filter(
+            topic_id=self.kwargs['topic_id'])

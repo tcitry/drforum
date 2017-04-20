@@ -1,6 +1,7 @@
-from .topic import TopicListSerializer
+from .topic import TopicListSerializer, TopicCommentSerializer
 
 
 __all__ = [
     'TopicListSerializer',
+    'TopicCommentSerializer',
 ]
