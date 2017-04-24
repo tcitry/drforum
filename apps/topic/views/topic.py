@@ -1,6 +1,7 @@
 import logging
 
 from rest_framework import generics
+from rest_framework import status
 from rest_framework.permissions import IsAuthenticated
 from rest_framework.views import APIView, Response
 
@@ -34,7 +35,7 @@ class TopicListView(APIView):
         res_data = {
             'msg': 'ok'
         }
-        return Response(res_data, status=200)
+        return Response(res_data, status=status.HTTP_200_OK)
 
 
 class TopicDetailView(generics.RetrieveUpdateDestroyAPIView):
