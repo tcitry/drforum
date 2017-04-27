@@ -1,6 +1,6 @@
 from django.contrib.auth.models import User
 from django.db import models
-from common import IDAutoAddModel
+from common import IDGeneratedModel, IDAutoAddModel
 
 
 class TopicModel(IDAutoAddModel):
@@ -31,3 +31,12 @@ class TopicCommentModel(IDAutoAddModel):
 
     def __str__(self):
         return self.topic.title
+
+
+class TopicNodeModel(IDGeneratedModel):
+    node_name = models.CharField(max_length=20)
+    create_user_id = models.IntegerField()
+
+    class Meta:
+        db_table = 'topic_node'
+        ordering = ('created_time',)

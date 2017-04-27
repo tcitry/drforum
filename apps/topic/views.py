@@ -5,8 +5,8 @@ from rest_framework import status
 from rest_framework.permissions import IsAuthenticated
 from rest_framework.views import APIView, Response
 
-from ..models import TopicModel, TopicCommentModel
-from ..serializers import TopicListSerializer, TopicCommentSerializer
+from .models import TopicModel, TopicCommentModel
+from .serializers import TopicListSerializer, TopicCommentSerializer
 
 logger = logging.getLogger(__name__)
 
