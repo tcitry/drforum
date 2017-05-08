@@ -27,8 +27,8 @@ class TopicListView(APIView):
         index = total_topic.count() + 1
         serializer = TopicListSerializer()
         create_param = {
-            'title': 'title_%s' % index,
-            'content': 'content_%s' % index,
+            'title': 'title_{index}'.format(index),
+            'content': 'content_{index}'.format(index),
             'author_id': 1
         }
         serializer.create(create_param)
@@ -48,7 +48,7 @@ class TopicDetailView(generics.RetrieveUpdateDestroyAPIView):
     serializer_class = TopicListSerializer
 
     def get_queryset(self):
-        print(self.request.query_params)
+        logger.debug('query_params is ', self.request.query_params)
         return TopicModel.objects.all()
 
 
