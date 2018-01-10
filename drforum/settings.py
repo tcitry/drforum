@@ -101,7 +101,7 @@ DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
         # 'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
-        'NAME': 'drforkdb',
+        'NAME': 'drforum',
         'PASSWORD': '123456',
         'USER': 'root',
         'HOST': '127.0.0.1',
