@@ -13,7 +13,6 @@ class TopicModel(IDAutoAddModel):
         'TopicNodeModel', on_delete=models.SET_NULL, null=True)
 
     class Meta:
-        db_table = 'topics'
         ordering = ('-updated_time',)
 
     def __str__(self):
@@ -26,7 +25,6 @@ class TopicCommentModel(IDAutoAddModel):
     comment = models.TextField()
 
     class Meta:
-        db_table = 'topic_comments'
         ordering = ('created_time',)
 
     def __str__(self):
@@ -38,5 +36,4 @@ class TopicNodeModel(IDGeneratedModel):
     create_user_id = models.IntegerField()
 
     class Meta:
-        db_table = 'topic_node'
         ordering = ('created_time',)
