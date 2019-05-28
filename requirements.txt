@@ -1,6 +1,6 @@
-dj-database-url==0.5.0
-Django>=2.0.8
-djangorestframework==3.8.2
-psycopg2==2.7.3.2
-python-decouple==3.1
-pytz==2018.4
+dj-database-url
+Django
+djangorestframework
+psycopg2
+python-decouple
+pytz
