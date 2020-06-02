@@ -1,6 +1,6 @@
 from django.contrib.auth.models import User
 from rest_framework import viewsets, status
-from rest_framework.decorators import detail_route
+from rest_framework.decorators import action
 from rest_framework.response import Response
 
 from .serializers import UserSerializer
@@ -13,14 +13,14 @@ class AccountViewSet(viewsets.ModelViewSet):
     queryset = User.objects.all()
     serializer_class = UserSerializer
 
-    @detail_route(methods=['post'], url_path='change-password')
+    @action(methods=['post'], url_path='change-password', detail=True)
     def set_password(self, request, *args, **kwargs):
         """
         修改用户的密码
         """
         return Response(status=status.HTTP_200_OK)
 
-    @detail_route(methods=['post'], url_path='change-username')
+    @action(methods=['post'], url_path='change-username', detail=True)
     def change_username(self, request, *args, **kwargs):
         """
         修改用户的用户名
