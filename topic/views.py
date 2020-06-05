@@ -27,8 +27,8 @@ class TopicListView(APIView):
         index = total_topic.count() + 1
         serializer = TopicListSerializer()
         create_param = {
-            'title': 'title_{index}'.format(index),
-            'content': 'content_{index}'.format(index),
+            'title': f'title_{index}'.format(index),
+            'content': f'content_{index}'.format(index),
             'author_id': 1
         }
         serializer.create(create_param)

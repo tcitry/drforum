@@ -104,6 +104,11 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
+API_PERMISSION_CONF = {
+    'API_PREFIX': '/',
+    'API_DENIED_CODE': 400,
+}
+
 
 # Internationalization
 # https://docs.djangoproject.com/en/2.0/topics/i18n/
